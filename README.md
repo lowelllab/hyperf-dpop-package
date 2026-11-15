@@ -24,4 +24,6 @@ ConfigProvider自动发现提供依赖工厂、启动配置检查、可选doctor
 
 已安装 `hyperf/command` 时，使用 `php bin/hyperf.php dpop:gateway-config --output haproxy-dpop.next.cfg` 直接生成候选配置，再运行 `haproxy -c -f haproxy-dpop.next.cfg`。宿主继续使用原有日志配置。
 
+本地验收时，在宿主设置 `DPOP_MTLS_ENABLED=true`、`DPOP_MTLS_CLIENT_CA` 和可选的 `DPOP_MTLS_CLIENT_CRL`，并在 `mtls_trusted_proxies` 中填写直连 Hyperf 的网关 IP。生成测试证书和 CRL 后，可按完整命令校验配置、检查证书准入并运行 DPoP 签发、访问和刷新。 [mTLS 本地验收](https://github.com/lowelllab/hyperf-dpop/blob/main/docs/usage-examples.md#9-mtls-本地验收)
+
 完整文档：[使用示例](https://github.com/lowelllab/hyperf-dpop/blob/main/docs/usage-examples.md)、[接入指南](https://github.com/lowelllab/hyperf-dpop/blob/main/docs/integration.md)、[安全说明](https://github.com/lowelllab/hyperf-dpop/blob/main/docs/security.md)。
