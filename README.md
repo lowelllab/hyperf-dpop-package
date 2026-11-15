@@ -26,4 +26,6 @@ ConfigProvider自动发现提供依赖工厂、启动配置检查、可选doctor
 
 本地验收时，在宿主设置 `DPOP_MTLS_ENABLED=true`、`DPOP_MTLS_CLIENT_CA` 和可选的 `DPOP_MTLS_CLIENT_CRL`，并在 `mtls_trusted_proxies` 中填写直连 Hyperf 的网关 IP。生成测试证书和 CRL 后，可按完整命令校验配置、检查证书准入并运行 DPoP 签发、访问和刷新。 [mTLS 本地验收](https://github.com/lowelllab/hyperf-dpop/blob/main/docs/usage-examples.md#9-mtls-本地验收)
 
+2026-11-15 在全新的 Hyperf 3.2.0 项目从 Packagist 安装 v0.2.1 并按文档复测。新生成的服务端证书和有效客户端证书通过 OpenSSL 校验。保留默认日志配置时，mTLS 开启和关闭生成的配置均通过 `haproxy -c`，DPoP 签发、资源访问、刷新及刷新后访问均成功。开启后，无客户端证书、使用不受信任证书、使用过期证书及使用已吊销证书的连接均在 TLS 层被拒绝。 [Packagist 全新安装复测](https://github.com/lowelllab/hyperf-dpop/blob/main/docs/usage-examples.md#packagist-全新安装复测)
+
 完整文档：[使用示例](https://github.com/lowelllab/hyperf-dpop/blob/main/docs/usage-examples.md)、[接入指南](https://github.com/lowelllab/hyperf-dpop/blob/main/docs/integration.md)、[安全说明](https://github.com/lowelllab/hyperf-dpop/blob/main/docs/security.md)。
